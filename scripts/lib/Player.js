@@ -11,21 +11,47 @@ Player.prototype.update = function(){
 	
 	if(keydown.left)
 	{
-		this.x -= 2;
+		var currx = this.x - 2;
+		if(currx <= 0); // do nothing
+		else
+		{
+			this.x -= 2;
+		}
 	}
 	if(keydown.right)
 	{
-		this.x += 2;
+		var currx = this.x + 2;
+		if(currx+32 >= game.context_w); // do nothing
+		else
+		{	
+			this.x += 2;
+		}
 	}
 	// keydown.up : y is 0 at the top. y increases when you move down
 	if(keydown.up)
 	{
-		this.y -= 2;
+		var curry = this.y - 2;
+		if(curry <= 0); // do nothing
+		else
+		{
+			this.y -= 2;
+		}
 	}
 	if(keydown.down)
 	{
-		this.y += 2;
+		var curry = this.y + 2;
+		if(curry + 32 >= game.context_h);
+		else
+		{
+			this.y += 2;
+		}
 	}
+	/*
+	this.x = this.x.clamp(0,game.context_w - this.width);
+	this.y = this.y.clamp(0,game.context_h - this.height);
+	*/
+	// clamp it manually
+
 }
 
 Player.prototype.draw = function(){
