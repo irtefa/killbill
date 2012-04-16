@@ -5,6 +5,7 @@ var Player = function(game){
 	this.y = 100;
 	this.width = 32;
 	this.height = 32;
+	this.playerBullets = [];
 }
 
 Player.prototype.update = function(){
@@ -46,15 +47,33 @@ Player.prototype.update = function(){
 			this.y += 2;
 		}
 	}
-	/*
-	this.x = this.x.clamp(0,game.context_w - this.width);
-	this.y = this.y.clamp(0,game.context_h - this.height);
-	*/
-	// clamp it manually
+	// shoot
+	if(keydown.space)
+	{
+		this.shoot();
+	}
 
+}
+
+Player.prototype.shoot = function(){
+	
+	var bulletposition = this.midpoint();
+
+	this.playerBullets.push(Bullet({
+		speed: 5,
+		    x: bulletposition.x,
+		    y: bulletposition.y
+	}));
 }
 
 Player.prototype.draw = function(){
 
 	this.game.drawRectangle(this.color,this.x,this.y,10,10);
+}
+
+Player.prototype.midpoint = function(){
+	return {
+		x: this.x + this.width / 2,
+		y: this.y + this.height / 2
+	};
 }
