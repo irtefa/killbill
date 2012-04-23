@@ -5,8 +5,12 @@ var Player = function(game){
 	this.y = 100;
 	this.width = 32;
 	this.height = 32;
-	this.playerBullets = [];
+
 }
+
+
+var playerBullets = [];
+
 
 Player.prototype.update = function(){
 	
@@ -22,7 +26,7 @@ Player.prototype.update = function(){
 	if(keydown.right)
 	{
 		var currx = this.x + 2;
-		if(currx+32 >= game.context_w); // do nothing
+		if(currx+32 >= game.WIDTH); // do nothing
 		else
 		{	
 			this.x += 2;
@@ -41,7 +45,7 @@ Player.prototype.update = function(){
 	if(keydown.down)
 	{
 		var curry = this.y + 2;
-		if(curry + 32 >= game.context_h);
+		if(curry + 32 >= game.HEIGHT;
 		else
 		{
 			this.y += 2;
@@ -53,13 +57,30 @@ Player.prototype.update = function(){
 		this.shoot();
 	}
 
+
+	// taking care of the bullets
+	playerBullets.forEach(function(bullet){
+		bullet.update();
+	});
+
+	playerBullets = playerBullets.filter(function(bullet) {
+		return bullet.active;
+	});
 }
+
+Player.prototype.midpoint = function(){
+	return {
+		x: this.x + this.width / 2,
+		y: this.y + this.height / 2
+	};
+}
+
 
 Player.prototype.shoot = function(){
 	
 	var bulletposition = this.midpoint();
 
-	this.playerBullets.push(Bullet({
+	playerBullets.push(Bullet({
 		speed: 5,
 		    x: bulletposition.x,
 		    y: bulletposition.y
@@ -69,6 +90,11 @@ Player.prototype.shoot = function(){
 Player.prototype.draw = function(){
 
 	this.game.drawRectangle(this.color,this.x,this.y,10,10);
+
+	//drawing the bullet
+	playerBullets.forEach(function(bullet) {
+		bullet.draw;
+	})
 }
 
 Player.prototype.midpoint = function(){
@@ -77,3 +103,4 @@ Player.prototype.midpoint = function(){
 		y: this.y + this.height / 2
 	};
 }
+

@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<!-- libraries that i am adding -->
 
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<!-- Can only be used when you are online 
+	    <script src  = "https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+		-->
+	    
+	    <!-- Only when you are offline -->
+	    <script type = "text/javascript" src = "scripts/jquery-1.7.1.js"></script>
+	    <!-- -->
+
+	    <!-- Jquery Hotkey plugin that ties up the keys with the browser -->
 		<script type = "text/javascript" src = "scripts/lib/jquery.hotkeys.js"></script>
 		<script type = "text/javascript" src = "scripts/lib/key_status.js"></script>
+
+		<!-- Contains the game loop -->
 		<script type = "text/javascript" src = "scripts/lib/Game.js" ></script>
+		<!-- Has the Player Object -->
 		<script type = "text/javascript" src = "scripts/lib/Player.js"></script>
+		<!-- The 'Bullet' instance that is common
+			 for both the enemy and the player
+			 is kept in this file.
+		 -->
+		<script type = "text/javascript" src = "scripts/lib/Bullet.js"></script>
+
 	</head>
 
 	<body>

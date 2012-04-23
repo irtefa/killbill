@@ -1,10 +1,10 @@
 var Game = function() {
 	this.fps = 60;
 	var canvas = document.getElementById('world');
-	// the getContext method gives you a way to manipulate the canvas. It's like the portal to the canvas
+	// the getContext method gives you a way to manipulate the canvas. It's like a portal to the canvas
 	this.context = canvas.getContext('2d');
-	this.context_w = canvas.width;
-	this.context_h = canvas.height;
+	this.WIDTH = canvas.width;
+	this.HEIGHT = canvas.height;
 
 	this.player = new Player(this);
 
@@ -26,7 +26,7 @@ Game.prototype.updateAll = function(){
 Game.prototype.drawAll = function(){
 	// nothing here yet
 	var obj = this;
-	obj.drawRectangle('#fff',0,0,this.context_w,this.context_h);
+	obj.drawRectangle('#fff',0,0,this.WIDTH,this.HEIGHT);
 	obj.player.draw();
 }
 
